@@ -2,8 +2,7 @@ package Convert
 
 import "os"
 
-func ReadFile() []byte {
-	filename := "text.txt"
+func ReadFile(filename string) []byte {
 	data, err := os.ReadFile(filename)
 	if err != nil {
 		panic(err)
@@ -11,8 +10,6 @@ func ReadFile() []byte {
 	return data
 }
 
-func WriteFile() {
-	filename := "output.txt"
-
-	FileTransform(ReadFile(), filename)
+func WriteFile(filenameRead, filenameWrite string) {
+	FileTransform(ReadFile(filenameRead), filenameWrite)
 }
