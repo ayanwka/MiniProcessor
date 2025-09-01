@@ -10,6 +10,14 @@ import (
 func FileTransform(file []byte, name string) {
 	ByteToString := string(file)
 	arr := strings.Fields(ByteToString)
+
+	// проверка артиклей
+	for i := 0; i < len(arr); i++ {
+		if arr[i] == "a" && ((arr[i+1][0] == 'a') || ((arr[i+1][0] == 'e') || (arr[i+1][0] == 'i') || (arr[i+1][0] == 'o') || (arr[i+1][0] == 'u') || (arr[i+1][0] == 'h'))) {
+			arr[i] = "an"
+		}
+	}
+
 	for i := 0; i < len(arr); i++ {
 		switch {
 		case strings.HasPrefix(arr[i], ("(up")):
